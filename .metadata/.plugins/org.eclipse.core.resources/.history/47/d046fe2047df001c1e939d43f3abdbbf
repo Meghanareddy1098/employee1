@@ -1,0 +1,47 @@
+package com.servlet;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import org.apache.el.stream.Optional;
+
+import com.maven.dto.Employee;
+import com.maven.service.EmployeeServiceImpl;
+
+/**
+ * Servlet implementation class CreateEmployeeServlet
+ */
+public class CreateEmployeeServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+  
+	
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Integer empId = Integer.parseInt(request.getParameter("empId"));
+		String empName = request.getParameter("empName");
+		Double empSalary = Double.parseDouble(request.getParameter("empsal"));
+		String empDept = request.getParameter("empDept");
+		Employee employee = new Employee(empId, empName, empSalary, empDept);
+		EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
+		Optional<Employee> addedEmployee = employeeService.addEmployee(employee);
+		PrintWriter out= response.getWriter();
+		if(addedEmployee.isPresent()) {
+			out.print("<html>");
+			out.print("<body bgColor='pink'>");
+			out.print("<h1 style='color:green'>Employee added successfully");
+			out.print("</body>");
+			out.print("</html>");
+			
+		
+		
+	}
+	}
+
+}

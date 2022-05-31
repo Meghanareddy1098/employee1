@@ -1,0 +1,29 @@
+package com.servlet;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
+
+/**
+ * Servlet implementation class CreateEmployeeServlet
+ */
+public class CreateEmployeeServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+  
+	
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Integer empId = Integer.parseInt(request.getParameter("empId"));
+		String empName = request.getParameter("empName");
+		Double empSalary = Double.parseDouble(request.getParameter("empsal"));
+		String empDept = request.getParameter("empDept");
+		
+		response.getWriter().print("Emp Details" +empId+empName+empSalary+empDept);
+	}
+
+}

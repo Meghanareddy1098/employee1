@@ -1,0 +1,12 @@
+package com.maven.DAO;
+
+import java.util.List;
+import java.util.Optional;
+
+public interface EmployeeDAO {
+	public Optional<EmployeeDAO> addEmployee(EmployeeDAO employeedao);
+	public Optional<EmployeeDAO> updateEmployee(EmployeeDAO employeedao);
+	public Optional<EmployeeDAO> getEmployeeById(Integer empId );
+	public List<EmployeeDAO> getEmployees();
+
+}
